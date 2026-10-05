@@ -1,8 +1,26 @@
 const rows = document.querySelectorAll(".student-row");
+const averageEl = document.getElementById("class-average");
+
+function updateAverage() {
+  if (!averageEl) return;
+  const totals = [...document.querySelectorAll(".total")].map(
+    (c) => Number(c.textContent) || 0
+  );
+  const filled = totals.filter((t) => t > 0);
+  if (filled.length === 0) {
+    averageEl.textContent = "Class average: –";
+    return;
+  }
+  const avg = filled.reduce((a, b) => a + b, 0) / filled.length;
+  averageEl.textContent = `Class average: ${avg.toFixed(1)} (${filled.length}/${totals.length} scored)`;
+}
 
 rows.forEach((row) => {
   row.addEventListener("input", (event) => {
     const inputField = event.target;
+
+    // Name edits need no total/grade recalc
+    if (inputField.classList.contains("name-input")) return;
 
     // Bonus: Validation constraints
     if (inputField.classList.contains("ca") && Number(inputField.value) > 10) {
@@ -39,7 +57,13 @@ rows.forEach((row) => {
     else if (total >= 40 && total <= 44) grade = "E";
     else if (total >= 0 && total <= 39) grade = "F";
 
-    // Update Grade DOM
-    gradeCell.textContent = grade;
+    // Update Grade DOM — rubber-stamp style hook
+    const hasScore = [...caInputs, examInput].some((i) => i.value !== "");
+    gradeCell.dataset.grade = hasScore ? grade : "none";
+    gradeCell.querySelector("span").textContent = hasScore ? grade : "–";
+
+    updateAverage();
   });
 });
+
+updateAverage();

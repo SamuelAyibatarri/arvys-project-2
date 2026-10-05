@@ -2,78 +2,96 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Student Score Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Term ledger — enter CA and exam scores, get totals and rubber-stamp grades instantly." />
+    <title>Term Ledger — Student Score Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h2>Student Score Calculator</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>S/N</th>
-          <th>Name</th>
-          <th>CA 1 (/10)</th>
-          <th>CA 2 (/10)</th>
-          <th>CA 3 (/10)</th>
-          <th>Exam (/70)</th>
-          <th>Total (/100)</th>
-          <th>Grade</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Generates 5 rows for the 5 students -->
-        <tr class="student-row">
-          <td>1</td>
-          <td>Student 1</td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="exam" max="70" min="0" /></td>
-          <td class="total">0</td>
-          <td class="grade">-</td>
-        </tr>
-        <tr class="student-row">
-          <td>2</td>
-          <td>Student 2</td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="exam" max="70" min="0" /></td>
-          <td class="total">0</td>
-          <td class="grade">-</td>
-        </tr>
-        <tr class="student-row">
-          <td>3</td>
-          <td>Student 3</td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="exam" max="70" min="0" /></td>
-          <td class="total">0</td>
-          <td class="grade">-</td>
-        </tr>
-        <tr class="student-row">
-          <td>4</td>
-          <td>Student 4</td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="exam" max="70" min="0" /></td>
-          <td class="total">0</td>
-          <td class="grade">-</td>
-        </tr>
-        <tr class="student-row">
-          <td>5</td>
-          <td>Student 5</td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="ca" max="10" min="0" /></td>
-          <td><input type="number" class="exam" max="70" min="0" /></td>
-          <td class="total">0</td>
-          <td class="grade">-</td>
-        </tr>
-      </tbody>
-    </table>
+    <main class="ledger">
+      <header class="ledger__head">
+        <p class="eyebrow">Term ledger — 5 seats</p>
+        <h1>Score <span class="ledger__amp">&amp;</span> Stamp</h1>
+        <p class="lede">Type names, punch CA + exam. Totals tally, grades stamp themselves.</p>
+      </header>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-sn">S/N</th>
+              <th scope="col" class="col-name">Name</th>
+              <th scope="col">CA 1 <span class="max">/10</span></th>
+              <th scope="col">CA 2 <span class="max">/10</span></th>
+              <th scope="col">CA 3 <span class="max">/10</span></th>
+              <th scope="col">Exam <span class="max">/70</span></th>
+              <th scope="col">Total <span class="max">/100</span></th>
+              <th scope="col">Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="student-row">
+              <td class="sn">1</td>
+              <td><input type="text" class="name-input" value="Student 1" aria-label="Student 1 name" placeholder="Enter name" maxlength="60" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 1 CA 1 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 1 CA 2 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 1 CA 3 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="exam" max="70" min="0" aria-label="Student 1 exam out of 70" placeholder="–" /></td>
+              <td class="total">0</td>
+              <td class="grade" data-grade="none"><span>–</span></td>
+            </tr>
+            <tr class="student-row">
+              <td class="sn">2</td>
+              <td><input type="text" class="name-input" value="Student 2" aria-label="Student 2 name" placeholder="Enter name" maxlength="60" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 2 CA 1 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 2 CA 2 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 2 CA 3 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="exam" max="70" min="0" aria-label="Student 2 exam out of 70" placeholder="–" /></td>
+              <td class="total">0</td>
+              <td class="grade" data-grade="none"><span>–</span></td>
+            </tr>
+            <tr class="student-row">
+              <td class="sn">3</td>
+              <td><input type="text" class="name-input" value="Student 3" aria-label="Student 3 name" placeholder="Enter name" maxlength="60" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 3 CA 1 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 3 CA 2 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 3 CA 3 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="exam" max="70" min="0" aria-label="Student 3 exam out of 70" placeholder="–" /></td>
+              <td class="total">0</td>
+              <td class="grade" data-grade="none"><span>–</span></td>
+            </tr>
+            <tr class="student-row">
+              <td class="sn">4</td>
+              <td><input type="text" class="name-input" value="Student 4" aria-label="Student 4 name" placeholder="Enter name" maxlength="60" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 4 CA 1 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 4 CA 2 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 4 CA 3 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="exam" max="70" min="0" aria-label="Student 4 exam out of 70" placeholder="–" /></td>
+              <td class="total">0</td>
+              <td class="grade" data-grade="none"><span>–</span></td>
+            </tr>
+            <tr class="student-row">
+              <td class="sn">5</td>
+              <td><input type="text" class="name-input" value="Student 5" aria-label="Student 5 name" placeholder="Enter name" maxlength="60" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 5 CA 1 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 5 CA 2 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="ca" max="10" min="0" aria-label="Student 5 CA 3 out of 10" placeholder="–" /></td>
+              <td><input type="number" class="exam" max="70" min="0" aria-label="Student 5 exam out of 70" placeholder="–" /></td>
+              <td class="total">0</td>
+              <td class="grade" data-grade="none"><span>–</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <footer class="ledger__foot">
+        <p id="class-average" class="average" role="status" aria-live="polite">Class average: –</p>
+        <p class="hint">A 70+ · B 60+ · C 50+ · D 45+ · E 40+ · F below</p>
+      </footer>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
