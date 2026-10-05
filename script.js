@@ -1,0 +1,45 @@
+const rows = document.querySelectorAll(".student-row");
+
+rows.forEach((row) => {
+  row.addEventListener("input", (event) => {
+    const inputField = event.target;
+
+    // Bonus: Validation constraints
+    if (inputField.classList.contains("ca") && Number(inputField.value) > 10) {
+      inputField.value = 10;
+    } else if (
+      inputField.classList.contains("exam") &&
+      Number(inputField.value) > 70
+    ) {
+      inputField.value = 70;
+    }
+
+    // Gather all inputs in the current row
+    const caInputs = row.querySelectorAll(".ca");
+    const examInput = row.querySelector(".exam");
+    const totalCell = row.querySelector(".total");
+    const gradeCell = row.querySelector(".grade");
+
+    // Calculate total
+    let total = 0;
+    caInputs.forEach((ca) => {
+      total += Number(ca.value) || 0;
+    });
+    total += Number(examInput.value) || 0;
+
+    // Update Total DOM
+    totalCell.textContent = total;
+
+    // Determine Grade
+    let grade = "F";
+    if (total >= 70 && total <= 100) grade = "A";
+    else if (total >= 60 && total <= 69) grade = "B";
+    else if (total >= 50 && total <= 59) grade = "C";
+    else if (total >= 45 && total <= 49) grade = "D";
+    else if (total >= 40 && total <= 44) grade = "E";
+    else if (total >= 0 && total <= 39) grade = "F";
+
+    // Update Grade DOM
+    gradeCell.textContent = grade;
+  });
+});

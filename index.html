@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Score Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Student Score Calculator</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>S/N</th>
+          <th>Name</th>
+          <th>CA 1 (/10)</th>
+          <th>CA 2 (/10)</th>
+          <th>CA 3 (/10)</th>
+          <th>Exam (/70)</th>
+          <th>Total (/100)</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Generates 5 rows for the 5 students -->
+        <tr class="student-row">
+          <td>1</td>
+          <td>Student 1</td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="exam" max="70" min="0" /></td>
+          <td class="total">0</td>
+          <td class="grade">-</td>
+        </tr>
+        <tr class="student-row">
+          <td>2</td>
+          <td>Student 2</td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="exam" max="70" min="0" /></td>
+          <td class="total">0</td>
+          <td class="grade">-</td>
+        </tr>
+        <tr class="student-row">
+          <td>3</td>
+          <td>Student 3</td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="exam" max="70" min="0" /></td>
+          <td class="total">0</td>
+          <td class="grade">-</td>
+        </tr>
+        <tr class="student-row">
+          <td>4</td>
+          <td>Student 4</td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="exam" max="70" min="0" /></td>
+          <td class="total">0</td>
+          <td class="grade">-</td>
+        </tr>
+        <tr class="student-row">
+          <td>5</td>
+          <td>Student 5</td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="ca" max="10" min="0" /></td>
+          <td><input type="number" class="exam" max="70" min="0" /></td>
+          <td class="total">0</td>
+          <td class="grade">-</td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="script.js"></script>
+  </body>
+</html>
